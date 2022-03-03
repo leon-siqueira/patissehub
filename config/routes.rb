@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :products, only: %i[index]
+  resources :products, only: %i[index show edit destroy]
   root to: 'pages#home'
   get "/my_profile", to: "pages#my_profile", as: "my_profile"
   get "/profile/:id", to: "pages#profile"

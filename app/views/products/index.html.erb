@@ -1,2 +1,33 @@
-<h1>PRODUCTS#INDEX</h1>
-<p>finja que está vendo uma lista de doces e docerias aqui</p>
+ <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>Você buscou por<strong><%= @query %></strong>. Encontramos <%= @products.count %> produtos no nosso site.</p>
+      <% else %>
+        <p>Todos nossos <%= Product.count %> produtos.</p>
+      <% end %>
+    </div>
+  </div>
+
+<div>
+</div>
+
+<div>
+ <div class="">
+    <% @products.each do |product| %>
+      <div class="">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="https://picsum.photos/268/180.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h4 class="card-title"><%=product.name%></h5>
+            <p class="card-text"><%=product.description%></p>
+            <div>
+            <a href="#" class="btn btn-primary"><%=product.user.name %></a>
+            <a href="#" class="btn btn-primary">Outros botão</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
