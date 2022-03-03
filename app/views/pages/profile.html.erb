@@ -1,0 +1,11 @@
+
+
+<h2><%= @user.name %></h2>
+<div>
+  <% @user.products.each do |product| %>
+    <h3><%= product.name %></h3>
+    <h4><strong> Valor: R$<%= product.price %></strong></h4>
+    <h4><strong> Tempo de produção: </strong><%= product.estimated_delivery%> dias</h4>
+    <p>Descrição: <%= product.description %></p>
+  <% end %>
+</div>

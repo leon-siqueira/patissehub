@@ -1,0 +1,19 @@
+<h1>PROFILE#PAGE</h1>
+
+<img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+
+<div class="card-profile">
+  <div class="card-profile-infos">
+    <h2><%= current_user.name %></h2>
+    <p><%= current_user.email %></p>
+  </div>
+</div>
+
+<div>
+  <% current_user.products.each do |product| %>
+    <h3><%= product.name %></h3>
+    <h4><strong> Valor: R$<%= product.price %></strong></h4>
+    <h4><strong> Tempo de produção: </strong><%= product.estimated_delivery%> dias</h4>
+    <p>Descrição: <%= product.description %></p>
+  <% end %>
+</div>
