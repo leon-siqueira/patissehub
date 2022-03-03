@@ -18,7 +18,7 @@ Rails.application.configure do
 
 
   # devise configuration
-  config.action_mailer.default_url_options = { host: '$HEROKU_HOST_HERE', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'https://patissehub.herokuapp.com/', port: 3000 }
 
   # Ensures that a master key has been made available in either ENV["RAILS_MASTER_KEY"]
   # or in config/master.key. This key is used to decrypt credentials (and other encrypted files).
