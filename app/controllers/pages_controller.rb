@@ -4,6 +4,12 @@ class PagesController < ApplicationController
   def home
   end
 
-  def profile
+  def my_profile
   end
+
+  def profile
+    @user = User.find(params[:id])
+  end
+
+
 end
