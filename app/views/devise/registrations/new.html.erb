@@ -1,25 +1,41 @@
-<h2>Sign up</h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= f.error_notification %>
+  <div class="container mt-5">
+    <div class="row justify-content-center rounded rounded-3 align-self-center">
+      <div class="col-lg-8 bg-light px-5 py-4 border border-grey">
+        <h2 class="my-3">Sign up</h2>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+        <div class="form-inputs">
+          <%= f.input :name,
+                      autofocus: true,
+                      required: true,
+                      input_html: { autocomplete: "name" } %>
+          <%= f.input :email,
+                      required: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :address,
+                      required: false,
+                      input_html: { autocomplete: "street-address" } %>
+        </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+        <div class="form-actions mt-4">
+          <div class="row mt-3">
+            <div class="col-md-6 align-self-center">
+              <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+            </div>
+            <div class="col-md-6 mt-3 mt-md-0 align-self-center text-lg-end text-start">
+              <span>Already have an account? <%= render "devise/shared/links" %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
