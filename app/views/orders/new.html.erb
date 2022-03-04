@@ -1,2 +1,12 @@
-<h1>Order#new</h1>
+<h1>Novo pedido</h1>
 <p>Find me in app/views/order/new.html.erb</p>
+
+<h2><%= @product.name %></h2>
+<p><%= @product.price %></p>
+<p><%= @product.description %></p>
+
+<%= simple_form_for ([@product, @order]) do |f| %>
+  <%= f.submit 'Place order!', class:'btn btn-red mt-2' %>
+<% end %>
+
+<%= link_to 'Voltar', products_path %>
