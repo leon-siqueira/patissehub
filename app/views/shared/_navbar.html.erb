@@ -8,37 +8,41 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+    <div class="collapse navbar-collapse w-100" id="navbarSupportedContent">
+      <ul class="navbar-nav w-100 d-flex justify-content-between">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link" %>
-          </li><li class="nav-item active">
-            <%= link_to "Bolos", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Cupcakes", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <% link_to "Macarons", "#", class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Docinhos", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Sobremesas", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "Tortas", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Meu Perfil", my_profile_path, class: "dropdown-item" %>
-              <%= link_to "Meus Pedidos", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
+          <div class="d-flex flex-row">
+            <li class="nav-item active">
+              <%= link_to "Home", root_path, class: "nav-link" %>
+            </li><li class="nav-item active">
+              <%= link_to "Bolos", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Cupcakes", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <% link_to "Macarons", "#", class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Docinhos", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Sobremesas", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item active">
+              <%= link_to "Tortas", root_path, class: "nav-link margem-links"  %>
+            </li>
+          </div>
+          <div>
+            <li class="nav-item dropdown">
+              <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "Meu Perfil", my_profile_path, class: "dropdown-item" %>
+                <%= link_to "Meus Pedidos", "#", class: "dropdown-item" %>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+          </div>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
