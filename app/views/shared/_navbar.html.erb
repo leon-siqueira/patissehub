@@ -13,9 +13,9 @@
         <% if user_signed_in? %>
           <div class="d-flex flex-row">
             <li class="nav-item active">
-              <%= link_to "Home", root_path, class: "nav-link" %>
+              <%= link_to "Home", products_path, class: "nav-link" %>
             </li><li class="nav-item active">
-              <%= link_to "Bolos", "#", class: "nav-link" %>
+              <%= link_to "Bolos", root_path, class: "nav-link" %>
             </li>
             <li class="nav-item active">
               <%= link_to "Cupcakes", root_path, class: "nav-link" %>
@@ -38,7 +38,7 @@
               <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Meu Perfil", my_profile_path, class: "dropdown-item" %>
-                <%= link_to "Meus Pedidos", "#", class: "dropdown-item" %>
+                <%= link_to "Meus Pedidos", orders_path, class: "dropdown-item" %>
                 <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               </div>
             </li>
@@ -46,8 +46,7 @@
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
+          <% end %>
       </ul>
     </div>
   </div>
