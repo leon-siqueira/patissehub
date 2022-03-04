@@ -1,3 +1,9 @@
 <h2><%= @product.name %></h2>
 <p><%= @product.price %></p>
 <p><%= @product.description %></p>
+
+<div>
+<%= link_to "Order now", new_product_order_path(@product) %>
+</div>
+
+<%= link_to 'Voltar', products_path %>
