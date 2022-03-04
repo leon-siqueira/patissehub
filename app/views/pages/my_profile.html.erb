@@ -1,19 +1,42 @@
-<h1>PROFILE#PAGE</h1>
 
-<img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
-
-<div class="card-profile">
-  <div class="card-profile-infos">
-    <h2><%= current_user.name %></h2>
-    <p><%= current_user.email %></p>
+<%= render 'shared/bootstrap_container' do%>
+  <div class="row">
+    <div class="col-1 me-4 me-md-1">
+      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+    </div>
+    <div class="col-10">
+      <div class="card-profile">
+        <div class="card-profile-infos">
+          <h3><%= current_user.name %></h3>
+          <p><%= current_user.email %></p>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<div>
+  <h3 class='text-center pt-4 my-2'>Seu cardápio</h3>
+
   <% current_user.products.each do |product| %>
-    <h3><%= product.name %></h3>
-    <h4><strong> Valor: R$<%= product.price %></strong></h4>
-    <h4><strong> Tempo de produção: </strong><%= product.estimated_delivery%> dias</h4>
-    <p>Descrição: <%= product.description %></p>
+    <div class="card my-3 align-items-stretch">
+      <div class="card-header row align-items-center">
+        <div class="col-10 align-self-center fs-4">
+          <%= product.name %>
+        </div>
+        <div class="col-2 text-end">
+          <%= link_to product_path(product), method: :delete do %>
+            <i class="fa-solid fa-trash text-danger fs-4"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="m-3">
+        <h5 class="card-title">
+          Valor: R$<%= product.price %>
+        </h5>
+        <h5 class="card-title">
+          Tempo de produção: <%= pluralize('dia' , product.estimated_delivery) %>
+        </h5>
+        <p class='card-text'><%= product.description %></p>
+      </div>
+    </div>
   <% end %>
-</div>
+<% end %>
