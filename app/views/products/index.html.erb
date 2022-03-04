@@ -1,33 +1,45 @@
- <div class="row">
-    <div class="col">
+<%= render 'shared/bootstrap_container' do%>
+    <div class="col-12">
       <% if @query %>
         <p>Você buscou por<strong><%= @query %></strong>. Encontramos <%= @products.count %> produtos no nosso site.</p>
       <% else %>
         <p>Todos nossos <%= Product.count %> produtos.</p>
       <% end %>
     </div>
-  </div>
 
-<div>
-</div>
 
-<div>
- <div class="">
-    <% @products.each do |product| %>
-      <div class="">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="https://picsum.photos/268/180.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h4 class="card-title"><%=product.name%></h5>
-            <p class="card-text"><%=product.description%></p>
-            <div>
-            <a href="#" class="btn btn-primary"><%=product.user.name %></a>
-            <a href="#" class="btn btn-primary">Outros botão</a>
+  <% @products.each do |product| %>
+    <div class="col-md-6 col-xl-4 my-3">
+      <div class="card">
+        <h5 class="card-header"><%=product.name%></h5>
+        <img class="card-img-top w-100" src="<%= Faker::LoremFlickr.image(size: "180x90", search_terms: ['cake', 'sweet', 'food'], match_all: true) %>" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text card-description"><%=product.description%></p>
+          <div class="row justify-content-between align-items-center">
+
+
+            <div class="col-5 align-self-center">
+              <span class="align-self-center fs-5">R$<%= '%.2f' % product.price%></span>
+            </div>
+            <div class="col-7 text-end align-items-center">
+              <span class="<%='text-primary' if product.estimated_delivery == 0 %>">
+                <%if product.estimated_delivery == 0%>
+                  Pronta entrega
+                <% elsif product.estimated_delivery == 1%>
+                  Entrega amanhã
+                <% else %>
+                  Entrega em <%= product.estimated_delivery %> dias
+                <% end %>
+              </span>
+            </div>
+            <div class="col-12 mt-2 text-center">
+            <%= link_to new_product_order_path(product)  do %>
+              <span class="w-100 btn btn-primary fs-5">Encomendar</span>
+            <% end %>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <% end %>
-  </div>
-</div>
+  <% end %>
+<% end %>
