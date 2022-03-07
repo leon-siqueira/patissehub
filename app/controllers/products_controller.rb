@@ -14,11 +14,11 @@ class ProductsController < ApplicationController
     @product.user_id = current_user.id
     @product.save
 
-    redirect_to products_path(@product)
+    redirect_to my_profile_path
   end
 
   def show
-    @product = Product.find(id: params[:id])
+    @product = Product.find(params[:id])
   end
 
   def edit
