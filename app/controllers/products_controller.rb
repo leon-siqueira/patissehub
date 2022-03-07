@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @order = Order.new
   end
 
   def edit

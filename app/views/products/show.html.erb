@@ -1,9 +1,38 @@
-<h2><%= @product.name %></h2>
-<p><%= @product.price %></p>
-<p><%= @product.description %></p>
+<div class="container">
+  <div class="row bg-light justify-content-center p-3 border border-grey">
+    <div class="col-12 text-center">
+      <h4><%= @product.name %></h5>
+    </div>
+    <div class="col-12 text-center">
+      <h5><%= link_to @product.user.name, "../profile/#{@product.user.id}" %></h5>
+    </div>
+    <div class="row mt-3">
+      </div class="col-8 justify-content-center">
+        <p><%= @product.description %></p>
+        <p>Valor: <b><%= number_to_currency(@product.price, delimiter: "", unit: "R$") %></b></p>
+        <p>Entrega em: <b><%= (Date.today + @product.estimated_delivery).strftime("%e, %b %Y") %></b></p>
 
-<div>
-<%= link_to "Order now", new_product_order_path(@product) %>
+        <div class="col-6 align-self-center">
+          <%= link_to 'Voltar', :back, class:'fs-5' %>
+        </div>
+        <div class="col-6 text-end">
+          <span class='btn btn-primary fs-5' data-bs-toggle="modal" data-bs-target="#exampleModal">Encomendar</span>
+        </div>
+      <div>
+    </div>
+  </div>
 </div>
 
-<%= link_to 'Voltar', :back %>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog rounded">
+    <div class="modal-content bg-light">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirmação de pedido</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+          <%= render 'orders/new', product: @product%>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,23 +1,21 @@
 <%= render 'shared/bootstrap_container' do%>
-    <div class="col-12">
-      <% if @query %>
-        <p>Você buscou por<strong><%= @query %></strong>. Encontramos <%= @products.count %> produtos no nosso site.</p>
-      <% else %>
-        <p>Todos nossos <%= Product.count %> produtos.</p>
-      <% end %>
-    </div>
+  <div class="col-12">
+    <% if @query %>
+      <p>Você buscou por<strong><%= @query %></strong>. Encontramos <%= @products.count %> produtos no nosso site.</p>
+    <% else %>
+      <p>Todos nossos <%= Product.count %> produtos.</p>
+    <% end %>
+  </div>
 
 
   <% @products.each do |product| %>
     <div class="col-md-6 col-xl-4 my-3">
       <div class="card">
         <h5 class="card-header"><%=product.name%></h5>
-        <img class="card-img-top w-100" src="<%= Faker::LoremFlickr.image(size: "180x90", search_terms: ['cake', 'sweet', 'food'], match_all: true) %>" alt="Card image cap">
+        <img class="card-img-top" src="<%= Faker::LoremFlickr.image(size: "180x90", search_terms: ['cake', 'sweet', 'food'], match_all: true) %>" alt="Card image cap">
         <div class="card-body">
           <p class="card-text card-description"><%=product.description%></p>
           <div class="row justify-content-between align-items-center">
-
-
             <div class="col-5 align-self-center">
               <span class="align-self-center fs-5">R$<%= '%.2f' % product.price%></span>
             </div>
@@ -33,9 +31,9 @@
               </span>
             </div>
             <div class="col-12 mt-2 text-center">
-            <%= link_to new_product_order_path(product)  do %>
-              <span class="w-100 btn btn-primary fs-5">Encomendar</span>
-            <% end %>
+              <%= link_to product_path(product) do %>
+                <button class="btn btn-primary w-100 fs-5" >Mais detalhes</button>
+              <% end %>
             </div>
           </div>
         </div>
