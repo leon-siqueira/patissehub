@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :new, :create, :destroy]
 
   def index
     if params[:query]
@@ -7,9 +7,18 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.new(product_params)
+    @product.save
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def edit
