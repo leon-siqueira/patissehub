@@ -1,10 +1,15 @@
-<h1>Seus pedidos</h1>
-
-<div>
-  <% @orders.each do |order| %>
-    <h3><%= order.product.name %></h3>
-    <h4><%= order.product.user.name %></h5>
-    <h4>R$ <%= order.product.price %></h4>
-    <h4>Tempo estimado de entrega: <%= order.product.estimated_delivery %></h4>
-  <% end %>
-</div>
+<%= render 'shared/bootstrap_container' do %>
+  <div class="col">
+    <% @orders.reverse.each do |order| %>
+      <div class="card mb-3">
+        <h4 class="card-header"><%= order.created_at.strftime("%e, %b %Y - %R") %> </h4>
+        <div class="card-body">
+          <h4 class="card-title"><%= link_to order.product.name, product_path(order.product) %></h4>
+          <h5>Loja: <%= order.product.user.name %></h6>
+          <h5>Valor: <b><%= number_to_currency(order.product.price, delimiter: "", unit: "R$") %></b></h5>
+          <h5>Entretga estimada: <b><%= (order.created_at + order.product.estimated_delivery.days).strftime("%e, %b %Y") %></b></h5>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
