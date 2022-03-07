@@ -12,20 +12,44 @@ class ProductsController < ApplicationController
     # end
   end
 
+  def create
+    @product = Product.new(product_params)
+    @product.user_id = current_user.id
+    @product.save
+
+    redirect_to products_path(@product)
+  end
+
+  def new
+    @product = Product.new
+  end
+
   def show
+    @product = Product.find(id: params[:id])
   end
 
   def edit
+    
+  end
+
+  def update
+    @product.update(product_params)
+
+    redirect_to product_path(@product)
   end
 
   def destroy
     @product.destroy
-    redirect_to products_path
+    redirect_to my_profile_path
   end
 
   private
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :price, :estimated_delivery, :description)
   end
 end
