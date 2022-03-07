@@ -23,7 +23,7 @@
           <%= product.name %>
         </div>
         <div class="col-2 text-end">
-          <%= link_to edit_product_path(product), method: :edit do %>
+          <%= link_to edit_product_path(product) do %>
           <i class="far fa-edit fs-4"></i>
           <% end %>
           <%= link_to product_path(product), method: :delete do %>
