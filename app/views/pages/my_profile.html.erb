@@ -15,7 +15,7 @@
   </div>
 
   <h3 class='text-center pt-4 my-2'>Seu cardápio</h3>
-
+  <%= link_to 'Cadastrar Novo Produto', new_product_path %>
   <% current_user.products.each do |product| %>
     <div class="card my-3 align-items-stretch">
       <div class="card-header row align-items-center">
@@ -23,6 +23,9 @@
           <%= product.name %>
         </div>
         <div class="col-2 text-end">
+          <%= link_to edit_product_path(product) do %>
+          <i class="far fa-edit fs-4"></i>
+          <% end %>
           <%= link_to product_path(product), method: :delete do %>
             <i class="fa-solid fa-trash text-danger fs-4"></i>
           <% end %>

@@ -13,9 +13,9 @@
         <% if user_signed_in? %>
           <div class="d-flex flex-row">
             <li class="nav-item active">
-              <%= link_to "Home", products_path, class: "nav-link" %>
+              <%= link_to "Home", root_path, class: "nav-link" %>
             </li><li class="nav-item active">
-              <%= link_to "Bolos", root_path, class: "nav-link" %>
+              <%= link_to "Bolos", products_path, class: "nav-link" %>
             </li>
             <li class="nav-item active">
               <%= link_to "Cupcakes", root_path, class: "nav-link" %>
