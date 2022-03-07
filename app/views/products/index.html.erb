@@ -1,7 +1,7 @@
 <%= render 'shared/bootstrap_container' do%>
     <div class="col-12">
-      <% if @query %>
-        <p>Você buscou por<strong><%= @query %></strong>. Encontramos <%= @products.count %> produtos no nosso site.</p>
+      <% if params[:query] %>
+        <p>Você buscou por<strong> "<%= params[:query] %>" </strong>. Encontramos <%= @products.count %> produtos no nosso site.</p>
       <% else %>
         <p>Todos nossos <%= Product.count %> produtos.</p>
       <% end %>

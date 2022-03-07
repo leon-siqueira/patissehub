@@ -5,9 +5,11 @@
 <div class="container">
   <div class="row justify-content-center mt-5" >
     <div class="col-5">
-      <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="O que vai adoçar seu dia hoje?" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">Pesquisar</button>
+      <div class="input-group my-form-control">
+        <form action="/products" accept-charset="UTF-8" method="get">
+          <input type="text" name="query" id="query" class="form-control" placeholder="O que vai adoçar seu dia hoje?">
+          <input type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="Search">
+        </form>
       </div>
     </div>
   </div>
