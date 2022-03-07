@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :new, :create, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
     @products = Product.all
@@ -11,11 +11,14 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    @product.user_id = current_user.id
     @product.save
+
+    redirect_to products_path(@product)
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = Product.find(id: params[:id])
   end
 
   def edit
