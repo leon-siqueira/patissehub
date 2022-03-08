@@ -2,5 +2,6 @@
 <%= simple_form_for(@user, url: profiles_path) do |f| %>
   <%= f.input :name %>
   <%= f.input :address %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit 'Salvar', class:'btn btn-primary mt-2' %>
 <% end %>
