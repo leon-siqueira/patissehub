@@ -31,9 +31,9 @@
               </span>
             </div>
             <div class="col-12 mt-2 text-center">
-            <%= link_to new_product_order_path(product)  do %>
-              <span class="w-100 btn btn-primary fs-5">Encomendar</span>
-            <% end %>
+              <%= link_to product_path(product) do %>
+                <button class="btn btn-primary w-100 fs-5" >Mais detalhes</button>
+              <% end %>
             </div>
           </div>
         </div>
