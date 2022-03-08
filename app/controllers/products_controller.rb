@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     @product.user_id = current_user.id
     @product.save
 
-    redirect_to my_profile_path
+    redirect_to profiles_path
   end
 
   def show
@@ -30,12 +30,12 @@ class ProductsController < ApplicationController
 
   def update
     @product.update(product_params)
-    redirect_to my_profile_path
+    redirect_to profiles_path
   end
 
   def destroy
     @product.destroy
-    redirect_to my_profile_path
+    redirect_to profiles_path
   end
 
   private
