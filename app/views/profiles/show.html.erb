@@ -9,7 +9,14 @@
         <div class="card-profile-infos">
           <h3><%= current_user.name %></h3>
           <p><%= current_user.email %></p>
-          <%= link_to my_profile_edit_url do %>
+          <p>
+            available: <%= current_user.available %>
+            <%= simple_form_for(current_user, url: profiles_path) do |f| %>
+              <%= f.input :available, as: :hidden, input_html: {value: !current_user.available} %>
+              <%= f.submit 'Alterar Disponibilidade', class:'btn btn-primary mt-2' %>
+            <% end %>
+          </p>
+          <%= link_to edit_profiles_path do %>
           <i class="far fa-edit fs-4"></i>
           <% end %>
         </div>

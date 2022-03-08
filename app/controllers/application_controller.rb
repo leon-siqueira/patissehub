@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
 
   def configure_permitted_parameters
@@ -6,7 +7,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address])
 
     # For additional in app/views/devise/registrations/edit.html.erb
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :available, :estimated_reopen])
+    #devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :available, :estimated_reopen])
   end
 
 end
