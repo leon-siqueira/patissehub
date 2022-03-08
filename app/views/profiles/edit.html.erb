@@ -1,5 +1,6 @@
 <h1>Editar Usuario</h1>
-<%= simple_form_for(my_profile_edit_url) do |f| %>
+<%= simple_form_for(@user, url: profiles_path) do |f| %>
   <%= f.input :name %>
+  <%= f.input :address %>
   <%= f.submit 'Salvar', class:'btn btn-primary mt-2' %>
 <% end %>
