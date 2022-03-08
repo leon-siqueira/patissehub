@@ -22,16 +22,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
     @product.update(product_params)
-
     redirect_to my_profile_path
   end
 
