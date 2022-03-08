@@ -2,7 +2,11 @@
 <%= render 'shared/bootstrap_container' do%>
   <div class="row">
     <div class="col-1 me-4 me-md-1">
-      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      <% if current_user.photo.key %>
+      <%= cl_image_tag current_user.photo.key %>
+      <% else %>
+      <%= image_tag "blank-profile-picture", class: "avatar-large" %>
+      <% end %>
     </div>
     <div class="col-10">
       <div class="card-profile">

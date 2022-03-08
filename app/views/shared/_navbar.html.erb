@@ -35,7 +35,11 @@
           </div>
           <div>
             <li class="nav-item dropdown">
-              <%= image_tag "avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% if current_user.photo.key %>
+                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" } %>
+              <% else %>
+                <%= image_tag "blank-profile-picture", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" } %>
+              <% end %>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Meu Perfil", profiles_path, class: "dropdown-item" %>
                 <%= link_to "Meus Pedidos", orders_path, class: "dropdown-item" %>
