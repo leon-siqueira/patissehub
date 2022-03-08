@@ -13,8 +13,8 @@
         <div class="card-profile-infos">
           <h3><%= current_user.name %></h3>
           <p><%= current_user.email %></p>
-          <p>
-            available: <%= current_user.available %>
+          <p class="<%= current_user.available ? 'text-primary' : 'text-danger'%>" >
+            <%= current_user.available ? 'Aberto' : 'Fechado' %>
             <%= simple_form_for(current_user, url: profiles_path) do |f| %>
               <%= f.input :available, as: :hidden, input_html: {value: !current_user.available} %>
               <%= f.submit 'Alterar Disponibilidade', class:'btn btn-primary mt-2' %>
