@@ -13,7 +13,7 @@
       <div class="card">
         <h5 class="card-header"><%=product.name%></h5>
         <% if product.photo.key %>
-          <%= cl_image_tag product.photo.key %>
+          <%= cl_image_tag product.photo.key, class: 'card-img-top card-image', crop: "fill" %>
         <% else %>
           <%= image_tag "blank" %>
         <% end %>
