@@ -4,13 +4,17 @@
 
 <div class="container">
   <div class="row justify-content-center mt-5" >
-    <div class="col-5">
-      <div class="input-group my-form-control">
-        <form action="/products" accept-charset="UTF-8" method="get">
-          <input type="text" name="query" id="query" class="form-control" placeholder="O que vai adoçar seu dia hoje?">
-          <input type="submit" name="commit" value="Search" class="btn btn-primary" data-disable-with="Search">
-        </form>
-      </div>
+    <div class="col-lg-8">
+      <form action="/products" accept-charset="UTF-8" method="get">
+        <div class="justify-content-center input-group ">
+            <div class="col-12">
+              <input type="text" name="query" id="query" class="form-control col-12 mb-3" placeholder="O que vai adoçar seu dia hoje?">
+            </div>
+            <div class="col-12 d-flex justify-content-center">
+              <input type="submit" name="commit" value="Buscar" class="btn btn-primary fs-5" data-disable-with="Search">
+            </div>
+        </div>
+      </form>
     </div>
   </div>
 </div>

@@ -1,0 +1,14 @@
+
+<h4 class="mb-3 fw-bold"><%= product.name %></h4>
+<h5>Patisserie: <b><%= product.user.name %></b></h5>
+<h5>Endereço: <b><%= product.user.address %></b></h5>
+<h5>Valor: <b><%= number_to_currency(@product.price, delimiter: "", unit: "R$") %></b></h5>
+<h5>Entrega estimada: <b><%= (Date.today + product.estimated_delivery).strftime("%e, %b %Y") %></b></h5>
+
+<div class="row justify-content-end border-top pt-3">
+  <div class="col-6 text-end">
+    <%= simple_form_for ([product, @order]) do |f| %>
+      <%= f.submit 'Finalizar pedido!', class:'btn btn-primary fs-5' %>
+    <% end %>
+  </div>
+</div>
