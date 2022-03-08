@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
+  validates :estimated_delivery, inclusion: 0..15
   belongs_to :user
   has_many :orders, dependent: :destroy
+  has_one_attached :photo
   validates :estimated_delivery, inclusion: 0..15
 
   include PgSearch::Model
