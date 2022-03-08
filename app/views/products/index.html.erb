@@ -30,6 +30,9 @@
                 <% end %>
               </span>
             </div>
+            <div class="col-12 text-end align-items-center">
+              Distância: <%= current_user.distance_to(product.user).round(0)%> km
+            </div>
             <div class="col-12 mt-2 text-center">
               <%= link_to product_path(product) do %>
                 <button class="btn btn-primary w-100 fs-5" >Mais detalhes</button>
