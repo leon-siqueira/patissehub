@@ -12,7 +12,11 @@
     <div class="col-md-6 col-xl-4 my-3">
       <div class="card">
         <h5 class="card-header"><%=product.name%></h5>
-        <%= cl_image_tag product.photo.key, height: 180, width: 326, crop: :fill %>
+        <% if product.photo.key %>
+          <%= cl_image_tag product.photo.key %>
+        <% else %>
+          <%= image_tag "blank" %>
+        <% end %>
         <div class="card-body">
           <p class="card-text card-description"><%=product.description%></p>
           <div class="row justify-content-between align-items-center">
