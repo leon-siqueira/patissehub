@@ -2,7 +2,11 @@
 <%= render 'shared/bootstrap_container' do%>
   <div class="row">
     <div class="col-1 me-4 me-md-1">
-      <img class="avatar-large" alt="avatar-large" src="https://kitt.lewagon.com/placeholder/users/arthur-littm" />
+      <% if current_user.photo.key %>
+      <%= cl_image_tag current_user.photo.key, class: "avatar-large" %>
+      <% else %>
+      <%= image_tag "blank-profile-picture", class: "avatar-large" %>
+      <% end %>
     </div>
     <div class="col-10">
       <div class="card-profile">
@@ -37,7 +41,7 @@
           <i class="far fa-edit fs-4"></i>
           <% end %>
           <%= link_to product_path(product), method: :delete do %>
-            <i class="fa-solid fa-trash text-danger fs-4"></i>
+            <i class="fas fa-trash-alt text-danger fs-4"></i>
           <% end %>
         </div>
       </div>
