@@ -9,6 +9,9 @@
         <div class="card-profile-infos">
           <h3><%= current_user.name %></h3>
           <p><%= current_user.email %></p>
+          <%= link_to my_profile_edit_url do %>
+          <i class="far fa-edit fs-4"></i>
+          <% end %>
         </div>
       </div>
     </div>
