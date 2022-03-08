@@ -1,11 +1,46 @@
 
 
-<h2><%= @user.name %></h2>
-<div>
-  <% @user.products.each do |product| %>
-    <h3><%= product.name %></h3>
-    <h4><strong> Valor: R$<%= product.price %></strong></h4>
-    <h4><strong> Tempo de produção: </strong><%= product.estimated_delivery%> dias</h4>
-    <p>Descrição: <%= product.description %></p>
+<%= render 'shared/bootstrap_container' do %>
+  <% if @user.products.size > 0 %>
+    <h3><%= @user.name %></h3>
+    <h4 class='text-secondary'><%= @user.address %></h4>
+    <h4 class='text-center'>Cardápio</h4>
+    <% @user.products.each do |product| %>
+      <div class="col-md-6 col-xl-4 my-3">
+        <div class="card">
+          <h5 class="card-header"><%=product.name%></h5>
+          <%= cl_image_tag product.photo.key, class: 'card-img-top card-image', crop: :fill %>
+          <div class="card-body">
+            <p class="card-text card-description"><%=product.description%></p>
+            <div class="row justify-content-between align-items-center">
+              <div class="col-5 align-self-center">
+                <span class="align-self-center fs-5">R$<%= '%.2f' % product.price%></span>
+              </div>
+              <div class="col-7 text-end align-items-center">
+                <span class="<%='text-primary' if product.estimated_delivery == 0 %>">
+                  <%if product.estimated_delivery == 0%>
+                    Pronta entrega
+                  <% elsif product.estimated_delivery == 1%>
+                    Entrega amanhã
+                  <% else %>
+                    Entrega em <%= product.estimated_delivery %> dias
+                  <% end %>
+                </span>
+              </div>
+              <div class="col-12 text-end align-items-center">
+                Distância: <%= current_user.distance_to(product.user).round(0)%> km
+              </div>
+              <div class="col-12 mt-2 text-center">
+                <%= link_to product_path(product) do %>
+                  <button class="btn btn-primary w-100 fs-5" >Mais detalhes</button>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <h2>Este usuário não tem </h2>
   <% end %>
-</div>
+<% end %>
